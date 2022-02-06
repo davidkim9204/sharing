@@ -1,5 +1,6 @@
 package com.sharing;
 
+import android.os.Bundle; // added by qqplot
 import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {
@@ -12,4 +13,9 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "sharing";
   }
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(null);
+  } // added by qqplot
 }
