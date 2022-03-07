@@ -2,12 +2,17 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Home from '../screens/Home';
+import Search from '../screens/Search';
 import About from '../screens/About';
 
 const Stack = createNativeStackNavigator();
 
 const homeOptionStyle = {
   headerShown: false,
+};
+
+const searchOptionStyle = {
+  headerShown: true,
 };
 
 const aboutOptionStyle = {
@@ -18,7 +23,15 @@ const aboutOptionStyle = {
 const HomeStackNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} options={homeOptionStyle} />
+      <Stack.Screen name="HomeStack" component={Home} options={homeOptionStyle} />
+    </Stack.Navigator>
+  );
+};
+
+const SearchStackNavigator = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="SearchStack" component={Search} options={searchOptionStyle} />
     </Stack.Navigator>
   );
 };
@@ -26,7 +39,7 @@ const HomeStackNavigator = () => {
 const AboutStackNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="About" component={About} options={aboutOptionStyle} />
+      <Stack.Screen name="AboutStack" component={About} options={aboutOptionStyle} />
     </Stack.Navigator>
   );
 };
@@ -35,4 +48,5 @@ const AboutStackNavigator = () => {
 export {
     HomeStackNavigator,
     AboutStackNavigator,
+    SearchStackNavigator
 };

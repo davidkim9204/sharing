@@ -4,6 +4,7 @@ import { Icon } from 'react-native-elements';
 
 import {
     HomeStackNavigator,
+    SearchStackNavigator,
     AboutStackNavigator,
 } from './StackNavigator';
 
@@ -23,6 +24,16 @@ const BottomTabNavigator = () => {
                 type="ionicon"
               />
             );
+          } else if (route.name === 'Search') {
+            return (
+              <Icon
+                name={focused ? 'search' : 'search-outline'}
+                size={size}
+                color={color}
+                type='ionicon'
+              />
+            );
+
           } else if (route.name === 'About') {
             return (
               <Icon
@@ -43,6 +54,11 @@ const BottomTabNavigator = () => {
         name="Home"
         component={HomeStackNavigator}
         options={{ tabBarBadge: null, headerShown: false, }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchStackNavigator}
+        options={{ tabBarBadge: null, headerShown: false, } }
       />
       <Tab.Screen
         name="About"
