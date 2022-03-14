@@ -13,59 +13,64 @@ const Tab = createBottomTabNavigator();
 const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          if (route.name === 'Home') {
-            return (
-              <Icon
-                name={focused ? 'home' : 'home-outline'}
-                size={size}
-                color={color}
-                type="ionicon"
-              />
-            );
-          } else if (route.name === 'Search') {
-            return (
-              <Icon
-                name={focused ? 'search' : 'search-outline'}
-                size={size}
-                color={color}
-                type='ionicon'
-              />
-            );
-
-          } else if (route.name === 'About') {
-            return (
-              <Icon
-                name={focused ? 'document-text' : 'document-text-outline'}
-                size={size}
-                color={color}
-                type="ionicon"
-              />
-            );
-          } 
-        },
-      })}
-      tabBarOptions={{
-        activeTintColor: '#00aced',
-        inactiveTintColor: 'gray',
-      }}>
+    initialRouteName='Home'
+    screenOptions={{
+      tabBarActiveTintColor: '#00aced',
+      tabBarInactiveTintColor: 'gray',
+    }}
+    >
       <Tab.Screen
         name="Home"
         component={HomeStackNavigator}
-        options={{ tabBarBadge: null, headerShown: false, }}
+        options={{ 
+          tabBarLabel: 'Home',
+          tabBarBadge: null, 
+          headerShown: false,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? 'home' : 'home-outline'}
+              size={size}
+              color={color}
+              type="ionicon"
+            />
+          )
+        }}
       />
       <Tab.Screen
         name="Search"
         component={SearchStackNavigator}
-        options={{ tabBarBadge: null, headerShown: false, } }
-      />
+        options={{ 
+          tabBarLabel: 'Search',
+          tabBarBadge: null, 
+          headerShown: false,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? 'search' : 'search-outline'}
+              size={size}
+              color={color}
+              type='ionicon'
+            />
+          )
+        }}
+      />      
       <Tab.Screen
         name="About"
         component={AboutStackNavigator}
-        options={{ tabBarBadge: null, headerShown: false, } }
-      />
-    </Tab.Navigator>
+        options={{ 
+          tabBarLabel: 'About',
+          tabBarBadge: null, 
+          headerShown: false,
+          tabBarIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? 'document-text' : 'document-text-outline'}
+              size={size}
+              color={color}
+              type="ionicon"
+            />
+          )
+        }}
+      />    
+</Tab.Navigator>      
   );
 };
 
