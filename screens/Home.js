@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Image, Text, FlatList, StyleSheet } from 'react-native';
-// import { Header, Text } from 'react-native-elements';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { Header, Icon } from 'react-native-elements';
+import CardComponent from '../components/CardComponent';
 
 const Home = ({ navigation }) => {
 
@@ -14,7 +15,6 @@ const Home = ({ navigation }) => {
     setLoading(false);
     _getData();
 
-    return () => _getData();
   }, []);
 
   const _getData = () => {
@@ -34,11 +34,10 @@ const Home = ({ navigation }) => {
   };
 
   const _renderItem = ({ item }) => (
-    <View style={{ borderBottomWidth: 1, marginTop: 20 }}>
-      <Image source={{ uri: item.url }} style={{ height: 200 }} />
-      <Text>{item.title}</Text>
-      <Text>{item.id}</Text>
-    </View>
+      <CardComponent 
+        navigation={ navigation }
+        data={ item } 
+      />
   );
 
   const _handleLoadMore = () => {
@@ -60,15 +59,27 @@ const Home = ({ navigation }) => {
 
   } else {
     return (
-      <FlatList
-        data={data}
-        renderItem={_renderItem}
-        keyExtractor={(item, index) => item.id}
-        onEndReached={_handleLoadMore}
-        onEndReachedThreshold={1}
-        refreshing={refreshing}
-        onRefresh={_handleRefresh}
-      />
+      <View style={styles.container}>
+        <Header
+        centerComponent={{
+          text: 'Sharing Project',
+          style: styles.headerComponent,
+        }}
+        containerStyle={styles.headerContainer}
+        />
+        <FlatList
+          data={data}
+          renderItem={_renderItem}
+          keyExtractor={(item, index) => item.id}
+          onEndReached={_handleLoadMore}
+          onEndReachedThreshold={1}
+          refreshing={refreshing}
+          onRefresh={_handleRefresh}
+        />
+        <TouchableOpacity style={styles.button}>
+          <Icon name='edit' size={30} color='#01a699' />
+        </TouchableOpacity>
+      </View>
     );
 
   }
@@ -87,6 +98,19 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     justifyContent: 'space-around',
+  },
+  button: {
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 60,
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+    height: 60,
+    backgroundColor: '#fff',
+    borderRadius: 100,
   },
 });
 

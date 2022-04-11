@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../screens/Home';
 import Search from '../screens/Search';
 import About from '../screens/About';
+import Post from '../screens/Post';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,11 +20,16 @@ const aboutOptionStyle = {
   headerShown: true,
 };
 
+const postOptionStyle = {
+  headerShown: true,
+};
+
 
 const HomeStackNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="HomeStack" component={Home} options={homeOptionStyle} />
+      <Stack.Screen name="PostStack" component={Post} options={postOptionStyle} />
     </Stack.Navigator>
   );
 };
@@ -48,5 +54,5 @@ const AboutStackNavigator = () => {
 export {
     HomeStackNavigator,
     AboutStackNavigator,
-    SearchStackNavigator
+    SearchStackNavigator,
 };
