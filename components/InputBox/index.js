@@ -8,6 +8,7 @@ import {
   Pressable,
 } from "react-native";
 
+
 const InputBox = () => {
   const [value, setValue] = useState("");
   const moveText = useRef(new Animated.Value(0)).current;

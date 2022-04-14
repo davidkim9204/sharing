@@ -16,6 +16,7 @@ const Home = ({ navigation }) => {
     _getData();
 
   }, []);
+  
 
   const _getData = () => {
 

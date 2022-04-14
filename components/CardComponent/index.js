@@ -34,7 +34,6 @@ const CardComponent = ({ navigation, data }) => {
             </TouchableHighlight>
         </View>
     );
-
 };
  
 const styles = StyleSheet.create({

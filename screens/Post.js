@@ -7,8 +7,6 @@ const Post = ({ route, navigation }) => {
 
     const { data, otherParam } = route.params;
 
-
-
     return (
         <ScrollView>
             <View style={ styles.container }>

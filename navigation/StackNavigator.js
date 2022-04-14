@@ -24,7 +24,6 @@ const postOptionStyle = {
   headerShown: true,
 };
 
-
 const HomeStackNavigator = () => {
   return (
     <Stack.Navigator>
